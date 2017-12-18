@@ -10,6 +10,7 @@ http://localhost:9411
 
 ### NoteApp
 - GET http://localhost:8090/list
+- GET http://localhost:8090/hystrix/list
 - GET http://localhost:8090/note/{id}
 - DELETE http://localhost:8090/note/{id}
 - POST http://localhost:8090/
