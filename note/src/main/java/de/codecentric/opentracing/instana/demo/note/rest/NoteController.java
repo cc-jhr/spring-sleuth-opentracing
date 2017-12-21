@@ -6,6 +6,7 @@ import de.codecentric.opentracing.instana.demo.note.dto.Note;
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.sleuth.Span;
 import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.core.ParameterizedTypeReference;
@@ -28,12 +29,12 @@ public class NoteController {
     private final RestTemplate restTemplate;
     private final Tracer tracer;
 
+    @Value("${note.base.url:'http://localhost:8080'}")
     private String baseUrl;
 
     public NoteController(RestTemplate restTemplate, Tracer tracer) {
         this.restTemplate = restTemplate;
         this.tracer = tracer;
-        this.baseUrl = "http://localhost:8080/";
     }
 
     @GetMapping("/note/{id}")

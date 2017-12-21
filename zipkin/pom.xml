@@ -33,4 +33,8 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>zipkin</finalName>
+	</build>
 </project>

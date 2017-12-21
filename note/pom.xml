@@ -44,6 +44,8 @@
 		</dependency>
 	</dependencies>
 
-
-
+	
+	<build>
+		<finalName>note</finalName>
+	</build>
 </project>
