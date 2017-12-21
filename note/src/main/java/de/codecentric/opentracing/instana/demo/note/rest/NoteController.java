@@ -41,7 +41,7 @@ public class NoteController {
 
         Note note = null;
         try {
-            note = restTemplate.getForObject(baseUrl + "/" + id, Note.class);
+            note = restTemplate.getForObject(baseUrl + "/notes/" + id, Note.class);
             tagSpan(note);
             return ResponseEntity.ok().body(note);
 
@@ -105,7 +105,7 @@ public class NoteController {
         Note noteReponse;
         try {
 
-            noteReponse = restTemplate.patchForObject(baseUrl, note, Note.class);
+            noteReponse = restTemplate.postForObject(baseUrl, note, Note.class);
 
             // OpenTracing / Sleuth
             logEvent("added: " + noteReponse.getId());
@@ -128,7 +128,7 @@ public class NoteController {
     public ResponseEntity<String> deleteNote(@PathVariable(value = "id") Long id) {
         try {
 
-            restTemplate.delete(baseUrl + "/id");
+            restTemplate.delete(baseUrl + "/notes/" + id);
 
             // OpenTracing / Sleuth
             logEvent("deleted: " + id);
