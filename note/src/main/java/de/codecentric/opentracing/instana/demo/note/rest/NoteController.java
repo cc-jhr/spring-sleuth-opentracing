@@ -36,7 +36,7 @@ public class NoteController {
         this.baseUrl = "http://localhost:8080/";
     }
 
-    @GetMapping("/note/{id}")
+    @GetMapping("/notes/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable(value = "id") Long id) {
 
         Note note = null;
@@ -73,16 +73,20 @@ public class NoteController {
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Hystrix Fallback");
     }
 
-    @GetMapping("/list")
+    @GetMapping("/notes")
     public ResponseEntity<List<Note>> getAllNotes() {
 
         List<Note> noteList;
         try {
 
             ResponseEntity<List<Note>> noteResponse =
-                    restTemplate.exchange(baseUrl + "/list",
-                            HttpMethod.GET, null, new ParameterizedTypeReference<List<Note>>() {
-                            });
+                    restTemplate.exchange(
+                        baseUrl + "/notes",
+                        HttpMethod.GET,
+                        null,
+                        new ParameterizedTypeReference<List<Note>>() {
+                        }
+                    );
 
             noteList = noteResponse.getBody();
 
@@ -120,7 +124,7 @@ public class NoteController {
         tagSpan("note", note.getNoteMessage());
     }
 
-    @DeleteMapping("note/{id}")
+    @DeleteMapping("notes/{id}")
     public ResponseEntity<String> deleteNote(@PathVariable(value = "id") Long id) {
         try {
 
