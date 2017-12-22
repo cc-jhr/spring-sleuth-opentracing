@@ -1,6 +1,5 @@
 package de.codecentric.opentracing.instana.demo.note.rest;
 
-import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import de.codecentric.opentracing.instana.demo.note.dto.Note;
 import org.apache.commons.lang.math.RandomUtils;

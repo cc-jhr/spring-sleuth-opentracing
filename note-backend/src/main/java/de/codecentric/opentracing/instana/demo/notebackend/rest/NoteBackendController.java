@@ -52,7 +52,10 @@ public class NoteBackendController {
 
         List<Note> noteList;
         try {
-            noteList = noteRepo.findAll().stream().map(noteEntity -> new Note(noteEntity.getId(), noteEntity.getNote())).collect(Collectors.toList());
+            noteList = noteRepo.findAll()   .
+                stream()
+                .map(noteEntity -> new Note(noteEntity.getId(), noteEntity.getNote()))
+                .collect(Collectors.toList());
 
             // OpenTracing / Sleuth
             logEvent("get all notes, count: " + noteList.size());

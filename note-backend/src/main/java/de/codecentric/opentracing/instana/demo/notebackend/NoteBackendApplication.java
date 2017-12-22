@@ -2,6 +2,7 @@ package de.codecentric.opentracing.instana.demo.notebackend;
 
 import de.codecentric.opentracing.instana.demo.notebackend.persistence.NoteEntity;
 import de.codecentric.opentracing.instana.demo.notebackend.persistence.NoteRepo;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,12 @@ public class NoteBackendApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        Arrays.asList(new NoteEntity("Note 1"), new NoteEntity("Note 2"), new NoteEntity("Note 3"))
-                .stream()
-                .forEach(noteRepo::save);
+        Stream.of(
+                new NoteEntity("Note 1"),
+                new NoteEntity("Note 2"),
+                new NoteEntity("Note 3")
+            )
+            .forEach(noteRepo::save);
 
         log.info("Number of added notes: " + noteRepo.count());
 
