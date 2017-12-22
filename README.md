@@ -11,8 +11,8 @@ http://localhost:9411
 ### NoteApp
 - GET http://localhost:8090/hystrix/list
 - GET http://localhost:8090/notes
-- GET http://localhost:8090/notes/{id}
-- DELETE http://localhost:8090/notes/{id}
+- GET http://localhost:8090/note/{id}
+- DELETE http://localhost:8090/note/{id}
 - POST http://localhost:8090/
 with body:
 ```
@@ -23,8 +23,8 @@ with body:
 
 ### NoteBackend
 - GET http://localhost:8080/notes
-- GET http://localhost:8080/notes/{id}
-- DELETE http://localhost:8080/notes/{id}
+- GET http://localhost:8080/note/{id}
+- DELETE http://localhost:8080/note/{id}
 - POST http://localhost:8080/
 with body:
 ```
