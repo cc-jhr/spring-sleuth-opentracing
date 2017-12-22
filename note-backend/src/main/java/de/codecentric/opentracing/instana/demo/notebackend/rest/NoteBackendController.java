@@ -30,7 +30,7 @@ public class NoteBackendController {
         this.tracer = tracer;
     }
 
-    @GetMapping("/note/{id}")
+    @GetMapping("/notes/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable(value = "id") Long id) {
         NoteEntity noteEntity = noteRepo.findOne(id);
 
@@ -47,7 +47,7 @@ public class NoteBackendController {
 
     }
 
-    @GetMapping("/list")
+    @GetMapping("/notes")
     public ResponseEntity<List<Note>> getAllNotes() {
 
         List<Note> noteList;
@@ -87,7 +87,7 @@ public class NoteBackendController {
         tagSpan("note", StringUtils.substring(noteEntity.getNote(), 0, 10));
     }
 
-    @DeleteMapping("note/{id}")
+    @DeleteMapping("notes/{id}")
     public ResponseEntity<String> deleteNote(@PathVariable(value = "id") Long id) {
         try {
             noteRepo.delete(id);
