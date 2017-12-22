@@ -36,12 +36,12 @@ public class NoteController {
         this.baseUrl = "http://localhost:8080/";
     }
 
-    @GetMapping("/notes/{id}")
+    @GetMapping("/note/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable(value = "id") Long id) {
 
         Note note = null;
         try {
-            note = restTemplate.getForObject(baseUrl + "/notes/" + id, Note.class);
+            note = restTemplate.getForObject(baseUrl + "/note/" + id, Note.class);
             tagSpan(note);
             return ResponseEntity.ok().body(note);
 
@@ -124,7 +124,7 @@ public class NoteController {
         tagSpan("note", note.getNoteMessage());
     }
 
-    @DeleteMapping("notes/{id}")
+    @DeleteMapping("note/{id}")
     public ResponseEntity<String> deleteNote(@PathVariable(value = "id") Long id) {
         try {
 
