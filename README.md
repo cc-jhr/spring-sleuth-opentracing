@@ -1,4 +1,5 @@
-# spring-sleuth-opentracing
+# spring-sleuth-opentracing 
+![Travis build](https://travis-ci.org/MrBW/spring-sleuth-opentracing.svg?branch=master)<br>
 Spring Sleuth &amp; OpenTracing demo
 
 ## Architecture
