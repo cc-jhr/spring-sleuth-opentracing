@@ -10,10 +10,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.sleuth.Sampler;
+import org.springframework.cloud.sleuth.SpanReporter;
+import org.springframework.cloud.sleuth.autoconfig.SleuthProperties;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
+import org.springframework.context.annotation.Primary;
 
 @SpringBootApplication
 public class NoteBackendApplication implements CommandLineRunner {
@@ -23,9 +24,19 @@ public class NoteBackendApplication implements CommandLineRunner {
     @Autowired
     private NoteRepo noteRepo;
 
+    @Autowired
+    private SleuthProperties properties;
+
     @Bean
     public Sampler sampler() {
         return new AlwaysSampler();
+    }
+
+    @Bean
+    @Primary
+    public SpanReporter instanaSpanReporter() {
+        log.info("Using INSTANA span reporter");
+        return new InstanaSpanReporter();
     }
 
     public static void main(String[] args) {
