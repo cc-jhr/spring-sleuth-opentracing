@@ -1,0 +1,17 @@
+version: '3'
+services:
+  note-app:
+    container_name: note-app
+    build: note/
+    ports:
+      - "8090:8090"
+  note-backend:
+    container_name: note-backend
+    build: note-backend/
+    ports:
+      - "8080:8080"
+  zipkin:
+    container_name: zipkin
+    build: zipkin/
+    ports:
+      - "9411:9411"

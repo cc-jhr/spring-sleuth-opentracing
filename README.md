@@ -33,3 +33,7 @@ with body:
     "noteMessage": "My Message"
 }
 ```
+
+## Start using docker-compose
+* build all projects ```$ ./mvnw clean package```
+* start up: ```$ docker-compose up --build```

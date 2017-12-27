@@ -30,7 +30,7 @@ public class NoteBackendController {
         this.tracer = tracer;
     }
 
-    @GetMapping("/notes/{id}")
+    @GetMapping("/note/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable(value = "id") Long id) {
         NoteEntity noteEntity = noteRepo.findOne(id);
 
@@ -52,7 +52,10 @@ public class NoteBackendController {
 
         List<Note> noteList;
         try {
-            noteList = noteRepo.findAll().stream().map(noteEntity -> new Note(noteEntity.getId(), noteEntity.getNote())).collect(Collectors.toList());
+            noteList = noteRepo.findAll()   .
+                stream()
+                .map(noteEntity -> new Note(noteEntity.getId(), noteEntity.getNote()))
+                .collect(Collectors.toList());
 
             // OpenTracing / Sleuth
             logEvent("get all notes, count: " + noteList.size());
@@ -87,7 +90,7 @@ public class NoteBackendController {
         tagSpan("note", StringUtils.substring(noteEntity.getNote(), 0, 10));
     }
 
-    @DeleteMapping("notes/{id}")
+    @DeleteMapping("note/{id}")
     public ResponseEntity<String> deleteNote(@PathVariable(value = "id") Long id) {
         try {
             noteRepo.delete(id);
