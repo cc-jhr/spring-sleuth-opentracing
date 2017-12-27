@@ -20,12 +20,6 @@ public class ReminderApplication {
         return new AlwaysSampler();
     }
 
-    @Primary
-    @Bean
-    public ObjectMapper objectMapper() {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.findAndRegisterModules();
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(ReminderApplication.class, args);
