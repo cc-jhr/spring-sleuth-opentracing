@@ -3,7 +3,7 @@
 Spring Sleuth &amp; OpenTracing demo
 
 ## Architecture
-![Architecture](/docs/OpenTracingDemo.png)
+![Architecture](/docs/NoteApp.png)
 
 ## Endpoints
 ### ZipKin Server
