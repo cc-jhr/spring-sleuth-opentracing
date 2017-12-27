@@ -3,6 +3,7 @@
 Spring Sleuth &amp; OpenTracing demo
 
 ## Architecture
+### - draft -
 ![Architecture](/docs/NoteApp.png)
 
 ## Endpoints
