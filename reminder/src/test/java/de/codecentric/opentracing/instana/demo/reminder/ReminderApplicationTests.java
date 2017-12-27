@@ -1,4 +1,4 @@
-package reminder;
+package de.codecentric.opentracing.instana.demo.reminder;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
