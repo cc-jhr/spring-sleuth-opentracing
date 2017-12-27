@@ -1,17 +1,18 @@
-package reminder.persistence;
+package de.codecentric.opentracing.instana.demo.reminder.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author Benjamin Wilms
  */
 @Entity
-public class RemindEntity {
-    public RemindEntity() {
+public class ReminderEntity {
+    public ReminderEntity() {
     }
 
     @Id
@@ -20,9 +21,9 @@ public class RemindEntity {
 
     private Long noteReferenceId;
 
-    private LocalDateTime remindDateTime;
+    private Date remindDateTime;
 
-    public RemindEntity(Long noteReferenceId, LocalDateTime remindDateTime) {
+    public ReminderEntity(Long noteReferenceId, Date remindDateTime) {
         this.noteReferenceId = noteReferenceId;
         this.remindDateTime = remindDateTime;
     }
@@ -43,11 +44,11 @@ public class RemindEntity {
         this.noteReferenceId = noteReferenceId;
     }
 
-    public LocalDateTime getRemindDateTime() {
+    public Date getRemindDateTime() {
         return remindDateTime;
     }
 
-    public void setRemindDateTime(LocalDateTime remindDateTime) {
+    public void setRemindDateTime(Date remindDateTime) {
         this.remindDateTime = remindDateTime;
     }
 }

@@ -1,4 +1,4 @@
-package reminder.persistence;
+package de.codecentric.opentracing.instana.demo.reminder.persistence;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -32,16 +33,16 @@ public class ReminderRepoTest {
     }
 
     @Test
-    public void whenFindById_thenReturnRemindEntity() throws Exception {
+    public void whenFindById_thenReturnReminderEntity() throws Exception {
         //given
         Long referencedNoteId = 99l;
-        LocalDateTime localDateTime = LocalDateTime.now();
-        RemindEntity givenRemindEntity = new RemindEntity(referencedNoteId, localDateTime);
-        RemindEntity persistedEntity = entityManager.persist(givenRemindEntity);
+        Date localDateTime = new Date();
+        ReminderEntity givenReminderEntity = new ReminderEntity(referencedNoteId, localDateTime);
+        ReminderEntity persistedEntity = entityManager.persist(givenReminderEntity);
         entityManager.flush();
 
         // when
-        RemindEntity foundEntityById = reminderRepo.findOne(persistedEntity.getId());
+        ReminderEntity foundEntityById = reminderRepo.findOne(persistedEntity.getId());
 
         //then
         assertThat(foundEntityById.getNoteReferenceId(), is(referencedNoteId));
@@ -52,8 +53,8 @@ public class ReminderRepoTest {
     @Test
     public void whenDeleteById_thenNumberOfEntitiesIs_ZERO() throws Exception {
         //given
-        RemindEntity givenRemindEntity = new RemindEntity();
-        RemindEntity persistedEntity = entityManager.persist(givenRemindEntity);
+        ReminderEntity givenReminderEntity = new ReminderEntity();
+        ReminderEntity persistedEntity = entityManager.persist(givenReminderEntity);
         entityManager.flush();
         int totalSizeBeforeDelete = reminderRepo.findAll().size();
 
@@ -70,9 +71,9 @@ public class ReminderRepoTest {
     @Test
     public void whenFindAll_thenNumberOfEntitiesIs_3() throws Exception {
         //given
-        entityManager.persist(new RemindEntity());
-        entityManager.persist(new RemindEntity());
-        entityManager.persist(new RemindEntity());
+        entityManager.persist(new ReminderEntity());
+        entityManager.persist(new ReminderEntity());
+        entityManager.persist(new ReminderEntity());
         entityManager.flush();
 
         // when

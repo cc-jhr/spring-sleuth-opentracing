@@ -1,23 +1,26 @@
-package reminder.dto;
+package de.codecentric.opentracing.instana.demo.reminder.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author Benjamin Wilms
  */
-public class Remind {
+public class Reminder {
 
     private Long noteReferenceId;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime remindDateTime;
+    @JsonFormat
+            (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    public Date remindDateTime;
 
-    public Remind() {
+    public Reminder() {
     }
 
-    public Remind(Long noteReferenceId, LocalDateTime remindDateTime) {
+    public Reminder(Long noteReferenceId, Date remindDateTime) {
         this.noteReferenceId = noteReferenceId;
         this.remindDateTime = remindDateTime;
     }
@@ -30,11 +33,11 @@ public class Remind {
         this.noteReferenceId = noteReferenceId;
     }
 
-    public LocalDateTime getRemindDateTime() {
+    public Date getRemindDateTime() {
         return remindDateTime;
     }
 
-    public void setRemindDateTime(LocalDateTime remindDateTime) {
+    public void setRemindDateTime(Date remindDateTime) {
         this.remindDateTime = remindDateTime;
     }
 }
