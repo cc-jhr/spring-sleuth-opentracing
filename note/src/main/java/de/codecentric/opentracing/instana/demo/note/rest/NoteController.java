@@ -36,7 +36,7 @@ public class NoteController {
         this.tracer = tracer;
     }
 
-    @GetMapping("/note/{id}")
+    @GetMapping("/notes/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable(value = "id") Long id) {
 
         Note note = null;
@@ -55,7 +55,7 @@ public class NoteController {
 
     }
 
-    @GetMapping("/hystrix/list")
+    @GetMapping("/hystrix/notes")
     @HystrixCommand(fallbackMethod = "fallbackListAll")
     public ResponseEntity<List<Note>> getAllNotesCoveredByHystrix() {
         if(RandomUtils.nextBoolean()){
@@ -124,7 +124,7 @@ public class NoteController {
         tagSpan("note", note.getNoteMessage());
     }
 
-    @DeleteMapping("note/{id}")
+    @DeleteMapping("notes/{id}")
     public ResponseEntity<String> deleteNote(@PathVariable(value = "id") Long id) {
         try {
 
@@ -150,7 +150,7 @@ public class NoteController {
     private void tagSpan(String key, String content) {
         Span currentSpan = getCurrentSpan();
 
-        currentSpan.tag("demo.client." + key, content);
+        currentSpan.tag("note.client." + key, content);
 
     }
 

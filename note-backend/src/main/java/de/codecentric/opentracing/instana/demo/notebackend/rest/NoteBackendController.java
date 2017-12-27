@@ -30,7 +30,7 @@ public class NoteBackendController {
         this.tracer = tracer;
     }
 
-    @GetMapping("/note/{id}")
+    @GetMapping("/notes/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable(value = "id") Long id) {
         NoteEntity noteEntity = noteRepo.findOne(id);
 
@@ -90,7 +90,7 @@ public class NoteBackendController {
         tagSpan("note", StringUtils.substring(noteEntity.getNote(), 0, 10));
     }
 
-    @DeleteMapping("note/{id}")
+    @DeleteMapping("notes/{id}")
     public ResponseEntity<String> deleteNote(@PathVariable(value = "id") Long id) {
         try {
             noteRepo.delete(id);
@@ -115,7 +115,7 @@ public class NoteBackendController {
     private void tagSpan(String key, String content) {
         Span currentSpan = getCurrentSpan();
 
-        currentSpan.tag("demo.backend." + key, content);
+        currentSpan.tag("note.backend." + key, content);
 
     }
 
