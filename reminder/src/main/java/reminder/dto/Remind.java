@@ -1,5 +1,7 @@
 package reminder.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 
 /**
@@ -8,6 +10,8 @@ import java.time.LocalDateTime;
 public class Remind {
 
     private Long noteReferenceId;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime remindDateTime;
 
     public Remind() {
