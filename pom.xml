@@ -13,6 +13,7 @@
         <module>note</module>
         <module>note-backend</module>
         <module>zipkin</module>
+        <module>reminder</module>
     </modules>
 
     <parent>
